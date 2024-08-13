@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: asalek
+      POSTGRES_DB: piscineds
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    # volumes:
+      # - - /Users/asalek/goinfre/postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
