@@ -53,11 +53,6 @@ duplicated_rows_query = select(subquery).where(subquery.c.Row_Number > 1)
 # Fetch and print the duplicated rows
 duplicated_rows = session.execute(duplicated_rows_query).fetchall()
 
-if duplicated_rows:
-    print("Duplicated Rows:")
-    for row in duplicated_rows:
-        print(row)
-
 # Optionally, delete the duplicated rows
 duplicated_ids = [row[0] for row in duplicated_rows]  # Assuming the first column is the ID
 
