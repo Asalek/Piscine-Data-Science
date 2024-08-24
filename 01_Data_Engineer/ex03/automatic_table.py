@@ -55,7 +55,7 @@ def create_table_class(table_name):
     created_tables[table_name] = DynamicTable
     return DynamicTable
 
-# Function to create tables for files
+# Function to create tables fjor files
 def create_tables_for_files(file_list):
     for file in file_list:
         table_name = file.split('.')[0]
@@ -81,11 +81,11 @@ for file in dir_list:
             if i == 0:
                 i += 1
                 continue
-            event_time = row[0]
-            event_type = row[1]
-            product_id = row[2]
-            price = row[3]
-            user_id = row[4]
+            event_time = row[0] if row[0] != '' else None
+            event_type = row[1] if row[1] != '' else None
+            product_id = row[2] if row[2] != '' else None
+            price = row[3] if row[3] != '' else None
+            user_id = row[4] if row[4] != '' else None
             user_session = safe_uuid_conversion(row[5])
 
             # Create a new instance of the dynamic table class

@@ -38,6 +38,7 @@ data_2023_jan = Table('data_2023_jan', metadata, autoload_with=engine)
 data_2022_oct = Table('data_2022_oct', metadata, autoload_with=engine)
 data_2022_nov = Table('data_2022_nov', metadata, autoload_with=engine)
 data_2022_dec = Table('data_2022_dec', metadata, autoload_with=engine)
+data_2023_feb = Table('data_2023_feb', metadata, autoload_with=engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
@@ -75,6 +76,14 @@ union_query = union_all(
         data_2023_jan.c.price,
         data_2023_jan.c.user_id,
         data_2023_jan.c.user_session
+    ),
+    select(
+        data_2023_feb.c.event_time,
+        data_2023_feb.c.event_type,
+        data_2023_feb.c.product_id,
+        data_2023_feb.c.price,
+        data_2023_feb.c.user_id,
+        data_2023_feb.c.user_session
     )
 )
 
